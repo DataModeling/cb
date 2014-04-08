@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<!DOCTYPE tiles-definitions PUBLIC 
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="baselayout" template="/basiclayout.jsp">
+		<put-attribute name="title" value="Communication Broker"/>
+		<put-attribute name="menu" value="/menu.jsp" />
+		<put-attribute name="options" value="/options.jsp" />
+		<put-attribute name="content" value=" " />
+		<put-attribute name="footer" value="/footer.jsp" />
+
+	</definition>
+
+	<definition name="inbox" extends="baselayout">
+		<put-attribute name="content" value="/inbox.jsp" />
+	</definition>
+
+	<definition name="msgSend" extends="baselayout">
+		<put-attribute name="content" value="/success.jsp" />
+	</definition>
+
+	<definition name="error" extends="baselayout">
+		<put-attribute name="content" value="/error.jsp" />
+	</definition>
+	
+	<definition name="singleMail" extends="baselayout">
+		<put-attribute name="content" value="/singleMail.jsp"/>
+	</definition>
+	
+	<definition name="outbox" extends="baselayout">
+		<put-attribute name="content" value="/outbox.jsp"/>
+	</definition>
+</tiles-definitions>

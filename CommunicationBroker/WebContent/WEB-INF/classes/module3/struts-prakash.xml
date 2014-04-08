@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="prakash" namespace="/module3" extends="struts-default,json-default,tiles-default">
+		<!-- All action Mappings will go over here -->
+		<!-- Login Related Actions -->
+		<action name="login" class="iiitb.cb.actions.LoginAction" method="isValidUser">
+			<result name="success" type="redirect">getEmails</result>
+			<result name="error">error</result>
+		</action>
+		
+		<action name="register" class="iiitb.cb.actions.LoginAction"
+			method="registerUser">
+			<result name="input">/register.jsp</result>
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="register_redirect" class="iiitb.cb.actions.Success" method="makeCountryList">
+			<result name="success">/register.jsp</result>
+		</action>
+		
+		<action name="logout" class="iiitb.cb.actions.LoginAction" method="logout">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<!-- Email Related Actions -->
+		<action name="getEmails" class="iiitb.cb.actions.EmailAction" method="loadEmails">
+			<result name="success" type="tiles">inbox</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="loadSelectedEmail" class="iiitb.cb.actions.EmailAction" method="loadSelectedEmail">
+			<result name="success" type="tiles">singleMail</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="loadOutboxEmails" class="iiitb.cb.actions.EmailAction" method="loadOutboxEmails">
+			<result name="success" type="tiles">outbox</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="loadSelectedOutboxEmail" class="iiitb.cb.actions.EmailAction" method="loadSelectedOutboxEmail">
+			<result name="success" type="tiles">singleMail</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<!-- Ajax Actions -->
+		<action name="loadNextEmailsAjax" class="iiitb.cb.actions.EmailAjaxAction" method="loadNextEmailsAjax">
+			<result type="json"/>
+		</action>
+		<action name="loadPreviousEmailAjax" class="iiitb.cb.actions.EmailAjaxAction" method="loadPreviousEmailAjax">
+			<result type="json"/>
+		</action>
+	</package>
+</struts>
