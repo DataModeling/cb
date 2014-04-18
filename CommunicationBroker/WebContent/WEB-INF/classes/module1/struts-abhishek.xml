@@ -7,7 +7,7 @@
 	<package name="abhishek" namespace="/module1" extends="struts-default,tiles-default">
 		<!-- All action Mappings will go over here -->
 		<action name="compose" class="iiitb.cb.actions.Compose"
-			method="addEmail">
+			method="execute">
 			<result name="success" type="tiles">msgSend</result>
 			<result name="error" type="tiles">error</result>
 		</action>

@@ -18,7 +18,7 @@ public class Db4oConnect {
 
 	EmbeddedConfiguration config;
 	ObjectContainer database;
-	String dbName = "E:\\cb_database4.yap";
+	String dbName = "E:\\IIITB\\cb_database.yap";
 	public Db4oConnect() {
 		// TODO Auto-generated constructor stub
 		config = Db4oEmbedded.newConfiguration();
@@ -37,7 +37,7 @@ public class Db4oConnect {
 		config.common().objectClass(Folder.class).cascadeOnUpdate(true);
 		config.common().objectClass(Server.class).cascadeOnUpdate(true);
 		
-		database = Db4oEmbedded.openFile(config, "commBroker.yap");
+		database = Db4oEmbedded.openFile(config, "cb_database.yap");
 		return database;
 	}
 	
@@ -64,12 +64,19 @@ public class Db4oConnect {
 
 	//User Related Methods
 	public User getUserByEmail(User u){
+	
 		ObjectSet<User> result = database.queryByExample(u);
 
 		if(result.hasNext())
+		{
+			System.out.println("valid user : " +result.get(0).getName());
 			return result.next();
+		}
 		else
+		{
+			System.out.println("not a valid user");
 			return null;
+		}
 	}
 
 	public void addUser(User u){
@@ -97,9 +104,11 @@ public class Db4oConnect {
 	}
 	public Folder getFolderByName(Folder folder) {
 		// TODO Auto-generated method stub
+		System.out.println("in getFolderByName "+ folder);
 		ObjectSet<Folder> folderSet = database.queryByExample(folder);
 
 		if(folderSet.hasNext()){
+			System.out.println("folder present");
 			return folderSet.next();
 		}else{
 			return null;

@@ -36,41 +36,16 @@ public class Compose  extends ActionSupport implements ModelDriven<Email>{
 	User rcvr = new User();
 	User cc = new User();
 
-	public String addEmail(){
-		EmailImpl ei = new EmailImpl();
+	
+	public String execute(){
+		ComposeImpl ci= new ComposeImpl();
+		
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		String senderEmail = (String) session.get("email");
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy(HH:mm:ss)");
-		String temp = sdf.format(new Date());
-		Date d = null;
-		try {
-			d = sdf.parse(temp);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		e.setTimestamp(d);
-		ei.addEmail(e, senderEmail	,reciever_email);
-		return SUCCESS;
-	}
-	public String execute()
-	{
-		ComposeImpl ci= new ComposeImpl();
-		 Map<String, Object> session = ActionContext.getContext().getSession();
-		sender_email = (String) session.get("email");
-		User u1 =ci.getUser(sender_email);
-
-		if(u1!=null)
-		{
-			System.out.println("sender name is : "+u1.getName());
-			sndr = u1;
-		}
-		else
-		{
-			System.out.println(" sender does not exist");
-			return ERROR;
-		}
-
+		
+		
+		sndr = ci.getUser(senderEmail);
+		
 		User u2 = ci.getUser(reciever_email);
 		if(u2 !=null)
 		{
@@ -82,7 +57,6 @@ public class Compose  extends ActionSupport implements ModelDriven<Email>{
 			System.out.println(" receiver does not exist");
 			return ERROR;
 		}
-
 		if(cc_email.equalsIgnoreCase(""))
 		{
 			System.out.println("cc is empty");
@@ -100,23 +74,29 @@ public class Compose  extends ActionSupport implements ModelDriven<Email>{
 			}
 			else
 			{
-				System.out.println(" receiver does not exist");
+				System.out.println(" cc does not exist");
 				return ERROR;
 			}
 		}
-
-		Date date = new Date();
-		System.out.println(date.toString());
-
-		e.setTimestamp(date);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy(HH:mm:ss)");
+		String temp = sdf.format(new Date());
+		Date d = null;
+		try {
+			d = sdf.parse(temp);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		e.setTimestamp(d);
 		e.setSender(sndr);
 		e.setReciever(rcvr);
 		e.setCc(cc);
-
-		ci.sendMail(e,sndr,rcvr,cc,is_cc);
-
+		
+		ci.sendEmail(e,sndr,rcvr,cc,is_cc);
 		return SUCCESS;
 	}
+	
 	public String getCc_email() {
 		return cc_email;
 	}
