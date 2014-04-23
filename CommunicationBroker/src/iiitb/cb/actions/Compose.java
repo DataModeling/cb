@@ -13,6 +13,7 @@ import iiitb.cb.models.impl.EmailImpl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
@@ -90,7 +91,8 @@ public class Compose  extends ActionSupport implements ModelDriven<Email>{
 		}
 		e.setTimestamp(d);
 		e.setSender(sndr);
-		e.setReciever(rcvr);
+		e.setReciever(new ArrayList<User>());
+		e.getReciever().add(u2);
 		e.setCc(cc);
 		
 		ci.sendEmail(e,sndr,rcvr,cc,is_cc);

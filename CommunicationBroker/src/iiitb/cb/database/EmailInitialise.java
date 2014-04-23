@@ -41,7 +41,7 @@ public class EmailInitialise {
 				e1.printStackTrace();
 			}
 			e.setTimestamp(d);
-			ei.addEmail(e, sender, reciever);
+			//ei.addEmail(e, sender, reciever);
 		}
 //Retrieving 20 latest mails at a time		
 		List<Email> emailsList = ei.getEmails(reciever, 0);

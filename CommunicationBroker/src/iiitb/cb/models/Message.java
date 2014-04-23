@@ -1,10 +1,11 @@
 package iiitb.cb.models;
 
 import java.util.Date;
+import java.util.List;
 
 public class Message {
 	private User sender;
-	private User reciever;
+	private List<User> reciever;
 	private String body;
 	private Date timestamp;
 	
@@ -20,10 +21,11 @@ public class Message {
 	public void setSender(User sender) {
 		this.sender = sender;
 	}
-	public User getReciever() {
+
+	public List<User> getReciever() {
 		return reciever;
 	}
-	public void setReciever(User reciever) {
+	public void setReciever(List<User> reciever) {
 		this.reciever = reciever;
 	}
 	public String getBody() {

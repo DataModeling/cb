@@ -13,7 +13,7 @@ import iiitb.cb.models.User;
 
 public class EmailImpl {
 
-	public void addEmail(Email e, String s, String r) {
+	/*public void addEmail(Email e, String s, String r) {
 		// TODO Auto-generated method stub
 		Db4oConnect dbc = new Db4oConnect();
 		
@@ -38,7 +38,7 @@ public class EmailImpl {
 		dbc.updateFolder(outbox);
 		dbc.closeConnection();
 		
-	}
+	}*/
 	
 	public List<Email> getEmails(String email, int flag){
 		Db4oConnect dbc = new Db4oConnect();
@@ -83,7 +83,6 @@ public class EmailImpl {
 		
 		Email email_proto = new Email();
 		email_proto.setSender(sender);
-		email_proto.setReciever(reciever);
 		email_proto.setSubject(subject);
 		email_proto.setTimestamp(d);
 		
@@ -136,7 +135,6 @@ public class EmailImpl {
 		
 		Email email_proto = new Email();
 		email_proto.setSender(sender);
-		email_proto.setReciever(reciever);
 		email_proto.setSubject(subject);
 		email_proto.setTimestamp(d);
 		

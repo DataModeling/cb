@@ -54,7 +54,7 @@ tr:hover {
 					List<Email> emailList = (List<Email>) request.getAttribute("list");
 					for (int i = 0; i < emailList.size(); i++) {
 						Email e = emailList.get(i);
-						User reciever = e.getReciever();
+						User reciever = e.getReciever().get(0);
 						Date d = e.getTimestamp();
 						SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy(HH:mm:ss)");
 						out.println("<tr class='clickableRow clickable'>");
