@@ -9,7 +9,7 @@
 			<table>
 				<tr>
 					<td><b>To</b></td>
-					<td><input type="text" name="reciever_email" size="40"></td>
+					<td><input type="text" name="reciever_email" size="40"><br></td>
 				</tr>
 				<tr>
 					<td><b>Cc</b></td>
@@ -23,12 +23,12 @@
 					<td><textarea rows="8" cols="42" name="body" id="body"></textarea></td>
 				</tr>
 			</table>
-			&nbsp;&nbsp;<input type="submit" value="submit"><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="submit" class="btn btn-success">Submit</button><br>
 			<br>
 		</form>
 		<a href="javascript:void(0)"
 			onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
-			<center>Close</center></a>
+			<center><button type="button" class="btn btn-primary btn-sm" >Close</button></center></a>
 	</div>
 	<div id="fade" class="black_overlay"></div>
 					      <li><a href="#">Delete</a></li>
