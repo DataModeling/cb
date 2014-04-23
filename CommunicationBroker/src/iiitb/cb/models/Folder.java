@@ -11,23 +11,29 @@ import java.util.List;
 public class Folder {
 	private String folderName;
 	private User user;
-	private List<? super Message> emailList;
+	private List<? super Message> messagesList;
 
 	
 	public Folder(String string, User user2) {
 		// TODO Auto-generated constructor stub
 		this.folderName = string;
 		this.user = user2;
-		emailList = new ArrayList<>();
+		messagesList = new ArrayList<>();
 	}
 
-	public List<? super Message> getEmailList() {
-		return emailList;
+
+
+	public List<? super Message> getMessagesList() {
+		return messagesList;
 	}
 
-	public void setEmailList(List<? super Message> emailList) {
-		this.emailList = emailList;
+
+
+	public void setMessagesList(List<? super Message> messagesList) {
+		this.messagesList = messagesList;
 	}
+
+
 
 	public User getUser() {
 		return user;

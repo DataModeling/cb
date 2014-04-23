@@ -42,8 +42,8 @@ public class ComposeImpl {
 		Folder proto_folder_sender = new Folder("Outbox", sender);
 		Folder outbox = dbc.getFolderByName(proto_folder_sender);
 		
-		inbox.getEmailList().add(e);
-		outbox.getEmailList().add(e);
+		inbox.getMessagesList().add(e);
+		outbox.getMessagesList().add(e);
 		
 		dbc.updateFolder(inbox);
 		dbc.updateFolder(outbox);
@@ -52,7 +52,7 @@ public class ComposeImpl {
 		{
 			Folder proto_folder_cc = new Folder("Inbox", cc);
 			Folder inboxcc = dbc.getFolderByName(proto_folder_cc);
-			inboxcc.getEmailList().add(e);
+			inboxcc.getMessagesList().add(e);
 			dbc.updateFolder(inboxcc);
 
 		}

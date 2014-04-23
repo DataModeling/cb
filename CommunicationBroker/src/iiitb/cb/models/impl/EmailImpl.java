@@ -49,10 +49,10 @@ public class EmailImpl {
 		Folder proto_folder = new Folder("Inbox", user);
 		Folder f = dbc.getFolderByName(proto_folder);
 		
-		int listSize = f.getEmailList().size(), i=0;
+		int listSize = f.getMessagesList().size(), i=0;
 		//hardcoded to 20
 		while(i < 20 && (flag+i) < listSize){
-			Email e = (Email) f.getEmailList().get((listSize-1)-flag-i);
+			Email e = (Email) f.getMessagesList().get((listSize-1)-flag-i);
 			emailsList.add(e);
 			i++;
 		}
@@ -102,10 +102,10 @@ public class EmailImpl {
 		Folder proto_folder = new Folder("Outbox", user);
 		Folder f = dbc.getFolderByName(proto_folder);
 		
-		int listSize = f.getEmailList().size(), i=0;
+		int listSize = f.getMessagesList().size(), i=0;
 		//hardcoded to 20
 		while(i < 20 && (flag+i) < listSize){
-			Email e = (Email) f.getEmailList().get((listSize-1)-flag-i);
+			Email e = (Email) f.getMessagesList().get((listSize-1)-flag-i);
 			emailsList.add(e);
 			i++;
 		}
