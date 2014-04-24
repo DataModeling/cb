@@ -14,7 +14,17 @@
 		<put-attribute name="footer" value="/footer.jsp" />
 
 	</definition>
+	
+	<definition name="FTPbaselayout" template="/FTPbaselayout.jsp">
+		<put-attribute name="title" value="Communication Broker FTP"/>
+		<put-attribute name="menu" value="/menu.jsp" />
+		<put-attribute name="options" value="/FTPoptions.jsp" />
+		<put-attribute name="content" value=" " />
+		<put-attribute name="footer" value="/footer.jsp" />
 
+	</definition>
+
+	<!--  Mail struts -->
 	<definition name="inbox" extends="baselayout">
 		<put-attribute name="content" value="/inbox.jsp" />
 	</definition>
@@ -34,4 +44,17 @@
 	<definition name="outbox" extends="baselayout">
 		<put-attribute name="content" value="/outbox.jsp"/>
 	</definition>
+	
+	
+	<!-- FTP struts -->
+	
+	<definition name="FTPfiles" extends="FTPbaselayout">
+		<put-attribute name="content" value="/Ftpfiles.jsp"/>
+	</definition>
+	
+	
+	<definition name="FTPphotos" extends="FTPbaselayout">
+		<put-attribute name="content" value="/Ftpphotos.jsp"/>
+	</definition>
+	
 </tiles-definitions>

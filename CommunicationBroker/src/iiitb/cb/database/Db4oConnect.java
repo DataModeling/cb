@@ -2,6 +2,7 @@ package iiitb.cb.database;
 
 
 import iiitb.cb.models.Email;
+import iiitb.cb.models.FTP;
 import iiitb.cb.models.Folder;
 import iiitb.cb.models.Server;
 import iiitb.cb.models.User;
@@ -165,5 +166,17 @@ public class Db4oConnect {
 		i = u.size();
 		System.out.println("in db object list size is : " + i);
 		return u;																// it is returning user object set.
+	}
+	public FTP getFileByFilename(FTP proto) {
+		// TODO Auto-generated method stub
+		FTP test = new FTP();
+		ObjectSet<FTP> f = database.queryByExample(proto);
+		if(f.size() == 0)
+			return null;
+		else
+			test = f.get(0);
+		
+		return test;
+		
 	}
 }
