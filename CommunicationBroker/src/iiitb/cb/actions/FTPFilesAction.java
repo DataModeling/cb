@@ -5,6 +5,8 @@ import iiitb.cb.models.impl.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
@@ -22,6 +24,7 @@ public class FTPFilesAction  extends ActionSupport{
 	private String userDocContentType;
 	private String userDocFileName;
 	private String userDocFilePath;
+	private List<FTP> fileList;
 	
 	public String execute(){
 		
@@ -47,6 +50,20 @@ public class FTPFilesAction  extends ActionSupport{
 		file.setFileContentType(userDocContentType);
 		
 		fi.addFile(email, file);
+		return SUCCESS;
+	}
+	
+	public String getAllFiles(){
+		FTPFilesImpl fi = new FTPFilesImpl();
+
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		String email = (String)session.get("email");
+	
+		fileList  = new ArrayList<FTP>();
+		
+		fileList = fi.getAllFiles(email);
+		
+		
 		return SUCCESS;
 	}
 
@@ -80,6 +97,14 @@ public class FTPFilesAction  extends ActionSupport{
 
 	public void setUserDocFilePath(String userDocFilePath) {
 		this.userDocFilePath = userDocFilePath;
+	}
+
+	public List<FTP> getFileList() {
+		return fileList;
+	}
+
+	public void setFileList(List<FTP> fileList) {
+		this.fileList = fileList;
 	}
 	
 

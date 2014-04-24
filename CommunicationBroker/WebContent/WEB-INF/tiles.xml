@@ -17,7 +17,7 @@
 	
 	<definition name="FTPbaselayout" template="/FTPbaselayout.jsp">
 		<put-attribute name="title" value="Communication Broker FTP"/>
-		<put-attribute name="menu" value="/menu.jsp" />
+		<put-attribute name="menu" value="/FTPmenu.jsp" />
 		<put-attribute name="options" value="/FTPoptions.jsp" />
 		<put-attribute name="content" value=" " />
 		<put-attribute name="footer" value="/footer.jsp" />
@@ -53,8 +53,8 @@
 	</definition>
 	
 	
-	<definition name="FTPphotos" extends="FTPbaselayout">
+<!-- 	<definition name="FTPphotos" extends="FTPbaselayout">
 		<put-attribute name="content" value="/Ftpphotos.jsp"/>
-	</definition>
+	</definition>   -->
 	
 </tiles-definitions>

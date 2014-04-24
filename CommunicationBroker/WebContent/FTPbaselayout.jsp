@@ -57,7 +57,7 @@
 		<tiles:insertAttribute name="menu" />
 		</div>
 		
-		<div id="FTPoptions">
+		<div id="options">
 			<tiles:insertAttribute name="options" />
 
 		</div>
