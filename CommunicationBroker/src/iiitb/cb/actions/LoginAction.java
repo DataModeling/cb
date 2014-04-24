@@ -13,6 +13,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import iiitb.cb.models.User;
+import iiitb.cb.models.impl.ServerImpl;
 import iiitb.cb.models.impl.UserImpl;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -44,6 +45,11 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>,Sess
 			}
 			addFieldError("email", "Email Already Exists");
 		}
+		String[] tokens = user.getEmail().split("@");
+		ServerImpl si = new ServerImpl();
+		if(!si.isValidSuffix(tokens[1])){
+			addFieldError("email", "Please enter correct suffix");
+		}
 	}
 	@SkipValidation
 	public String isValidUser(){
@@ -51,7 +57,17 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>,Sess
 		if(uimpl.isValidUser(user)){
 			session.put("email", user.getEmail());
 			session.put("flag", 0);
-			return SUCCESS;
+			String[] tokens = user.getEmail().split("@");
+			
+			if(tokens[1].contains("mail")){
+				return "emailService";
+			}
+			if(tokens[1].contains("ftp")){
+				return "ftpService";
+			}else{
+				return ERROR;
+			}
+			
 		}else{
 			return ERROR;
 		}
@@ -72,7 +88,9 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>,Sess
 		int age = new Date().getYear() - user.getDob().getYear();
 		System.out.println(age);
 		user.setAge(age);
-		uimpl.registerUser(user);
+		String[] tokens = user.getEmail().split("@");
+		
+		uimpl.registerUser(user, tokens[1]);
 		return SUCCESS;
 	}
 	

@@ -7,8 +7,13 @@
 	<package name="prakash" namespace="/module3" extends="struts-default,json-default,tiles-default">
 		<!-- All action Mappings will go over here -->
 		<!-- Login Related Actions -->
+		<!-- if email service then load the email GUI or else redirect to module1's FTP GUI -->
 		<action name="login" class="iiitb.cb.actions.LoginAction" method="isValidUser">
-			<result name="success" type="redirect">getEmails</result>
+			<result name="emailService" type="redirect">getEmailMessages</result>
+			<result name="ftpService" type="chain">
+				<param name="namespace">/module1</param>
+		        <param name="actionName">getFTPMessages</param>
+			</result>
 			<result name="error">error</result>
 		</action>
 		
@@ -28,10 +33,11 @@
 		</action>
 		
 		<!-- Email Related Actions -->
-		<action name="getEmails" class="iiitb.cb.actions.EmailAction" method="loadEmails">
+		<action name="getEmailMessages" class="iiitb.cb.actions.EmailAction" method="loadEmails">
 			<result name="success" type="tiles">inbox</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		
 		<action name="loadSelectedEmail" class="iiitb.cb.actions.EmailAction" method="loadSelectedEmail">
 			<result name="success" type="tiles">singleMail</result>
 			<result name="error">/error.jsp</result>

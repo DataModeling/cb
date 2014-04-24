@@ -23,16 +23,16 @@ public class UserImpl {
 		}
 	}
 
-	public void registerUser(User user){
+	public void registerUser(User user, String serverSuffix){
 		Db4oConnect dbc = new Db4oConnect();
-		Server proto = new Server("EmailServer");
+		Server proto = new Server(serverSuffix);
 		Server server = dbc.getServerByName(proto);
 		server.getUsersList().add(user);
 		dbc.updateServer(server);
 		dbc.closeConnection();
 
 		FolderImpl fi = new FolderImpl();		
-		fi.createBasicFolders(user);
+		fi.createBasicFolders(user, serverSuffix);
 	}
 
 	public boolean isUsernameExists(User user) {

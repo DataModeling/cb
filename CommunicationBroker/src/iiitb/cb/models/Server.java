@@ -7,16 +7,21 @@ import java.util.List;
 
 public class Server {
 	private String serverName;
+	private String suffix;
 	private List<Folder> folderList;
 	private List<User> usersList;
 	private List<Group> groupsList;
 
-	public Server(String string) {
-		// TODO Auto-generated constructor stub
-		this.serverName = string;
+	public Server(){
+		
 	}
-	public Server(String string, boolean isNewServer){
-		this.serverName = string;
+	public Server(String suffix) {
+		// TODO Auto-generated constructor stub
+		this.suffix = suffix;
+	}
+	public Server(String serverName,String suffix, boolean isNewServer){
+		this.serverName = serverName;
+		this.suffix = suffix;
 		folderList = new ArrayList<Folder>();
 		usersList = new ArrayList<User>();
 		groupsList = new ArrayList<Group>();
@@ -45,4 +50,11 @@ public class Server {
 	public void setFolderList(List<Folder> folderList) {
 		this.folderList = folderList;
 	}
+	public String getSuffix() {
+		return suffix;
+	}
+	public void setSuffix(String suffix) {
+		this.suffix = suffix;
+	}
+	
 }
