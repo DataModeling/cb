@@ -13,7 +13,6 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import iiitb.cb.models.User;
-import iiitb.cb.models.impl.ServerImpl;
 import iiitb.cb.models.impl.UserImpl;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -30,7 +29,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>,Sess
 	User user = new User();
 	Map<String, Object> session;
 	private List<String> countryList;
-
+	private String serviceType;
 	public void validate(){
 		UserImpl ui = new UserImpl();
 		User temp = new User();
@@ -45,11 +44,11 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>,Sess
 			}
 			addFieldError("email", "Email Already Exists");
 		}
-		String[] tokens = user.getEmail().split("@");
+		/*String[] tokens = user.getEmail().split("@");
 		ServerImpl si = new ServerImpl();
 		if(!si.isValidSuffix(tokens[1])){
 			addFieldError("email", "Please enter correct suffix");
-		}
+		}*/
 	}
 	@SkipValidation
 	public String isValidUser(){
@@ -57,12 +56,11 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>,Sess
 		if(uimpl.isValidUser(user)){
 			session.put("email", user.getEmail());
 			session.put("flag", 0);
-			String[] tokens = user.getEmail().split("@");
 			
-			if(tokens[1].contains("mail")){
+			if(serviceType.equalsIgnoreCase("Email")){
 				return "emailService";
 			}
-			if(tokens[1].contains("ftp")){
+			if(serviceType.equalsIgnoreCase("FTP")){
 				return "ftpService";
 			}else{
 				return ERROR;
@@ -129,4 +127,11 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>,Sess
 		// TODO Auto-generated method stub
 		this.session = arg0;
 	}
+	public String getServiceType() {
+		return serviceType;
+	}
+	public void setServiceType(String serviceType) {
+		this.serviceType = serviceType;
+	}
+	
 }

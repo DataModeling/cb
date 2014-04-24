@@ -10,11 +10,13 @@ public class ServerImpl {
 		// TODO Auto-generated method stub
 		Db4oConnect dbc = new Db4oConnect();
 		
-		Server proto = new Server(s.getSuffix());
+		Server proto = new Server(s.getSuffix(),null);
 		Server server = dbc.getServerByName(proto);
 		
 		if(server == null){
-			server = new Server(s.getServerName(),s.getSuffix(), true);
+			server = new Server(s.getServerName(),s.getSuffix(),"Email", true);
+			dbc.updateServer(server);
+			server = new Server(s.getServerName(),s.getSuffix(),"FTP", true);
 			dbc.updateServer(server);
 			dbc.closeConnection();
 			return true;
@@ -48,11 +50,26 @@ public class ServerImpl {
 	public boolean isValidSuffix(String suffix) {
 		// TODO Auto-generated method stub
 		Db4oConnect dbc = new Db4oConnect();
-		Server proto = new Server(suffix);
+		Server proto = new Server(suffix, null);
 		Server server = dbc.getServerByName(proto);//change it to getServerBySuffix()
 		if(server != null){
+			dbc.closeConnection();
 			return true;
 		}else{
+			dbc.closeConnection();
+			return false;
+		}
+	}
+	
+	public boolean isSuffixAlreadyExists(String suffix){
+		Db4oConnect dbc = new Db4oConnect();
+		Server proto = new Server(suffix, null);
+		Server server = dbc.getServerByName(proto);//change it to getServerBySuffix()
+		if(server != null){
+			dbc.closeConnection();
+			return true;
+		}else{
+			dbc.closeConnection();
 			return false;
 		}
 	}

@@ -47,7 +47,11 @@ height:43px;
 					<input type="password" class="form-control" placeholder="Password"
 						name="password" required="true">
 				<br>
-				
+					<select name="serviceType">
+						<option value="Email">Email</option>
+						<option value="FTP">FTP</option>
+					</select>
+					<br>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 					in</button>
 				<br>

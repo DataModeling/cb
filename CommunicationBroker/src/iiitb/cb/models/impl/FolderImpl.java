@@ -11,16 +11,15 @@ public class FolderImpl {
 	public void createBasicFolders(User proto, String serverSuffix){
 		Db4oConnect dbc = new Db4oConnect();
 		User user = dbc.getUserByEmail(proto);
-		Server server = dbc.getServerByName(new Server(serverSuffix));
-		if(serverSuffix.contains("mail")){
+		Server server = dbc.getServerByName(new Server(serverSuffix, "Email"));
 			f = new Folder("Inbox",user);
 			server.getFolderList().add(f);
 			f = new Folder("Outbox",user);
 			server.getFolderList().add(f);
 			dbc.updateServer(server);
-			dbc.closeConnection();
-		}
-		if(serverSuffix.contains("ftp")){
+			
+			
+		server = dbc.getServerByName(new Server(serverSuffix, "FTP"));
 			f = new Folder("Files", user);
 			server.getFolderList().add(f);
 			f = new Folder("Photos", user);
@@ -29,7 +28,7 @@ public class FolderImpl {
 			server.getFolderList().add(f);
 			dbc.updateServer(server);
 			dbc.closeConnection();
-		}
+		
 
 	}
 }

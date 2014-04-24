@@ -1,4 +1,4 @@
-package iiitb.cb.database;
+/*package iiitb.cb.database;
 
 
 import iiitb.cb.models.Server;
@@ -18,3 +18,4 @@ public class DatabaseInitialise {
 		}
 	}
 }
+*/

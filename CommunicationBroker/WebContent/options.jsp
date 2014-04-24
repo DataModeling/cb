@@ -5,7 +5,7 @@
 	</h4>
 	<br>
 	<ul class="nav nav-tabs nav-stacked affix-top">
-		<li><a href="/CommunicationBroker/module3/getEmails">Inbox</a></li>
+		<li><a href="/CommunicationBroker/module3/getEmailMessages">Inbox</a></li>
 		<li><a href="/CommunicationBroker/module3/loadOutboxEmails">Sent mail</a></li>
 
 		<li><a href="#">Drafts</a></li>

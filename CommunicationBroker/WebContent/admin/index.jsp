@@ -38,16 +38,16 @@ height:43px;
 	<h3>Communication Broker | Admin Panel</h3>
 	
 		<div id="login">
-					<form action="module3/adminLogin" class="form-signin">
+					<form action="/CommunicationBroker/module3/adminLogin" class="form-signin">
 				<h3 class="featurette-heading" >Please Sign In</h3>
-					<input type="text" class="form-control" placeholder="Email" name="userName"
+					<input type="text" class="form-control" placeholder="userName" name="userName"
 						required="true" />
 				
 				
 					<input type="password" class="form-control" placeholder="Password"
 						name="password" required="true">
 				<br>
-				
+					
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 					in</button>
 				<br>

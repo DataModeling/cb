@@ -25,12 +25,20 @@ public class UserImpl {
 
 	public void registerUser(User user, String serverSuffix){
 		Db4oConnect dbc = new Db4oConnect();
-		Server proto = new Server(serverSuffix);
+		
+		//adds user to email server
+		Server proto = new Server(serverSuffix,"Email");
 		Server server = dbc.getServerByName(proto);
 		server.getUsersList().add(user);
 		dbc.updateServer(server);
+		
+		//adds server to FTP server
+		proto = new Server(serverSuffix,"FTP");
+		server = dbc.getServerByName(proto);
+		server.getUsersList().add(user);
+		dbc.updateServer(server);
 		dbc.closeConnection();
-
+		
 		FolderImpl fi = new FolderImpl();		
 		fi.createBasicFolders(user, serverSuffix);
 	}

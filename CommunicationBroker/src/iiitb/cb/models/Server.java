@@ -8,6 +8,7 @@ import java.util.List;
 public class Server {
 	private String serverName;
 	private String suffix;
+	private String serviceType;
 	private List<Folder> folderList;
 	private List<User> usersList;
 	private List<Group> groupsList;
@@ -15,13 +16,15 @@ public class Server {
 	public Server(){
 		
 	}
-	public Server(String suffix) {
+	public Server(String suffix, String serviceType) {
 		// TODO Auto-generated constructor stub
 		this.suffix = suffix;
+		this.serviceType = serviceType;
 	}
-	public Server(String serverName,String suffix, boolean isNewServer){
+	public Server(String serverName,String suffix,String serviceType, boolean isNewServer){
 		this.serverName = serverName;
 		this.suffix = suffix;
+		this.serviceType = serviceType;
 		folderList = new ArrayList<Folder>();
 		usersList = new ArrayList<User>();
 		groupsList = new ArrayList<Group>();
@@ -55,6 +58,12 @@ public class Server {
 	}
 	public void setSuffix(String suffix) {
 		this.suffix = suffix;
+	}
+	public String getServiceType() {
+		return serviceType;
+	}
+	public void setServiceType(String serviceType) {
+		this.serviceType = serviceType;
 	}
 	
 }

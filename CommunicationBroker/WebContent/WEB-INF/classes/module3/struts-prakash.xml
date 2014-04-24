@@ -60,5 +60,17 @@
 		<action name="loadPreviousEmailAjax" class="iiitb.cb.actions.EmailAjaxAction" method="loadPreviousEmailAjax">
 			<result type="json"/>
 		</action>
+		
+		<!-- Admin action -->
+		<action name="adminLogin" class="iiitb.cb.actions.AdminLoginAction">
+			<result name="input">/admin/index.jsp</result>
+			<result name="success">/admin/addServer.jsp</result>
+			<result name="error">error</result>
+		</action>
+			<action name="addServer" class="iiitb.cb.actions.AdminServerAction">
+			<result name="input">/admin/addServer.jsp</result>
+			<result name="success">/success.jsp</result>
+			<result name="error">error</result>
+		</action>
 	</package>
 </struts>
